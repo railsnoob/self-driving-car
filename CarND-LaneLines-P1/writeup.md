@@ -1,0 +1,52 @@
+# Finding Lane Lines on the Road
+
+**Finding Lane Lines on the Road**
+
+The goals / steps of this project are the following:
+* Make a pipeline that finds lane lines on the road
+* Reflect on your work in a written report
+
+
+[//]: # (Image References)
+
+[image1]: ./examples/grayscale.jpg "Grayscale"
+
+---
+
+### Reflection
+
+###1. Describe your pipeline. As part of the description, explain how you modified the draw_lines() function.
+
+My pipeline consisted of 5 steps:
+1. First, I converted the images to grayscale. 
+2. Second, I 
+
+In order to draw a single line on the left and right lanes, I modified the draw_lines() function in the following way:
+1. I collected all the lines with a negative slope and marked them as LEFT lines. 
+2. All lines with positive sloped lines I marked as RIGHT lines. 
+3. Then for Left & Right lines I removed all lines that were more that a standard deviatiion from the mean.
+4. Then I found the centeroid of the points for both left and righ lines. 
+5. Next, I found the weighted slope of left and right lines. 
+6. Using the centroid and weighted slope for both left and right lines, I calculated the intersection of this line with the top of the clipped regoin and the bottom of the image. 
+7. Using these two intersection points I drew 2 lines for left and right annontations.
+
+If you'd like to include images to show how the pipeline works, here is how to include an image: 
+
+![alt text][image1]
+
+
+###2. Identify potential shortcomings with your current pipeline
+
+
+One potential shortcoming would occur on very sharp turns my pipeline would not take into account the lines which were a standard deviation different from the mean. This means that it would not be able to cater to steep turns. 
+
+Another shortcoming could be that the clipping mask is static so again it would not be able to cater to turns. 
+
+I *plan to fix these shortcomings*. 
+
+
+###3. Suggest possible improvements to your pipeline
+
+A possible improvement would be to make the clipping mask dynamic. This way we could make sure we minimize the possibilty of noise from non road elements like dividers, trees, sky especially on turns.
+
+Another potential improvement could be to use a combination of piece wise lines instead of using 1 straight line. This would allow us to track turns. 
