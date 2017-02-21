@@ -6,9 +6,16 @@ The goals / steps of this project are the following:
 * Make a pipeline that finds lane lines on the road
 * Reflect on your work in a written report
 
+
+[//]: # (Image References)
+
+[image1]: ./examples/grayscale.jpg "Grayscale"
+
 ---
 
 ### Reflection
+
+
 
 ###1. Describe your pipeline. As part of the description, explain how you modified the draw_lines() function.
 
@@ -35,13 +42,14 @@ In order to draw a single line on the left and right lanes, I modified the draw_
 6. Using the centroid and weighted slope for both left and right lines, I calculated the intersection of this line with the top of the clipped regoin and the bottom of the image. 
 7. Using these two intersection points I drew 2 lines for left and right annontations.
 
-This image shows the combination of all the different transforms for the test_images: 
+This image shows the combination of all the different transforms: 
 1. The Canny edges are white,
 1. the clipped area is in green
 2. the detected lines are blue
 3. the final drawn lines are in red
 
-![alt text][./ShowAllTransforms.png]
+![alt text][image1]
+
 
 ###2. Identify potential shortcomings with your current pipeline
 
